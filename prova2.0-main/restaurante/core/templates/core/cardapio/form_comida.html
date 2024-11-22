@@ -1,0 +1,15 @@
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/criar.css' %}">
+
+<div class="container">
+    <a href="{% url 'listar_comidas' %}" class="button">Voltar</a>
+
+    <h1>{{ form.instance.pk|yesno:"Editar,Adicionar" }} Comida</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button">Salvar</button>
+    </form>
+</div>
+{% endblock %}

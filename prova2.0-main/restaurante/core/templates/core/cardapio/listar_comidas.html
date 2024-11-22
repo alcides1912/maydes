@@ -1,0 +1,39 @@
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/lista.css' %}">
+
+<div class="container">
+    <h1>Cardápio</h1>
+    <a href="{% url 'menu' %}" class="button">Voltar</a>
+    <a href="{% url 'criar_comida' %}" class="button">Adicionar Comida</a>
+    <a href="{% url 'listar_pedidos' %}" class="button">Pedidos</a>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for comida in comidas %}
+            <tr>
+                <td>{{ comida.nome }}</td>
+                <td>{{ comida.descricao }}</td>
+                <td>R$ {{ comida.preco }}</td>
+                <td>
+                    <a href="{% url 'editar_comida' comida.pk %}" class="button-editar">Editar</a>
+                    <form action="{% url 'excluir_comida' comida.pk %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="button-deletar">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/realizar_pedido.css' %}">
+
+<div class="container">
+    <a href="{% url 'listar_pedidos' %}" class="button">Voltar</a>
+
+    <h1>Novo Pedido</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+</div>
+{% endblock %}

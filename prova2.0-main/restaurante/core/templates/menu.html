@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% block title %}Restaurante Maydes {% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+
+<div>
+    <h1> Menu</h1>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <h2>Clientes</h2>
+            <p>Visualize e gerencie os clientes</p>
+            
+            <a href="{% url 'lista_clientes' %}" class="menu-button">Ver Clientes</a>
+        </div>
+        <div class="menu-item">
+
+            <h2>Reservas</h2>
+            <p>Visualize e gerencie as reservas.</p>
+            <a href="{% url 'lista_reservas' %}" class="menu-button">Ver Reservas</a>
+        </div>
+        <div class="menu-item">
+            <h2>Mesas</h2>
+            <p>Visualize e gerencie as mesas.</p>
+            <a href="{% url 'listar_mesas' %}" class="menu-button">Ver Mesas</a>
+        </div>
+        <div class="menu-item">
+            <h2>Usuários</h2>
+            <p>Visualize e gerencie os usuários.</p>
+            <a href="{% url 'listar_usuarios' %}" class="menu-button">Ver Usuários</a>
+        </div>
+        <div class="menu-item">
+            <h2>Cardápio</h2>
+            <p>Visualize e gerencie o cardápio.</p>
+            <a href="{% url 'listar_comidas' %}" class="menu-button">Ver Cardápio</a>
+        </div>
+        <div class="menu-item">
+            <h2>Eventos</h2>
+            <p>Visualize e gerencie os eventos.</p>
+            <a href="{% url 'listar_eventos' %}" class="menu-button">Ver Eventos</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Restaurante Maydes. Todos os direitos reservados.</p>
+    </footer>
+</div>
+{% endblock %}

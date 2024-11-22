@@ -1,0 +1,7 @@
+<h1>Excluir Comida</h1>
+<p>Tem certeza que deseja excluir "{{ comida.nome }}"?</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Sim</button>
+    <a href="{% url 'listar_comidas' %}">Cancelar</a>
+</form>

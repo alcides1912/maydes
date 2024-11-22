@@ -1,0 +1,94 @@
+/* Estilo Global */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121a2f; /* Azul escuro */
+    color: #d4d7dd; /* Cinza claro */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 2rem;
+    margin-top: 20px;
+    border-bottom: 2px solid #1b2a4b;
+    padding-bottom: 10px;
+}
+
+/* Links */
+a {
+    color: #70a1ff; /* Azul vibrante */
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+a:hover {
+    color: #1e90ff; /* Azul mais claro */
+}
+
+/* Botões */
+button {
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #4682b4; /* Azul mais escuro */
+}
+
+/* Listagem de Comidas */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+li {
+    background-color: #1b2a4b; /* Azul mais claro */
+    color: #d4d7dd;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+li a {
+    margin-right: 15px;
+}
+
+li form {
+    margin: 0;
+}
+
+/* Links no topo */
+a[href^="{% url 'criar_comida' %}"],
+a[href^="Gerar PDF"] {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 15px;
+    border: 1px solid #70a1ff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #70a1ff;
+    transition: all 0.3s ease;
+}
+
+a[href^="{% url 'criar_comida' %}"]:hover,
+a[href^="Gerar PDF"]:hover {
+    background-color: #70a1ff;
+    color: white;
+}

@@ -1,0 +1,70 @@
+{% block content %}
+<style>
+    table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+</style>
+<h1>Eventos</h1>
+<a href="{% url 'criar_evento' %}">Adicionar Evento</a>
+<table>
+    <thead>
+        <tr>
+            <th>Nome do Evento</th>
+            <th>Data e Hora</th>
+            <th>Cardápio</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for evento in evento %}
+        <tr>
+            <td>{{ evento.nome }}</td>
+            <td>{{ evento.data_hora|date:"d/m/Y H:i" }}</td>
+            <td>
+                <strong>Comidas:</strong>
+                <ul>
+                    {% for comida in evento.cardapio.all %}
+                    <li>{{ comida.nome }}</li>
+                    {% endfor %}
+                </ul>
+                <strong>Bebidas:</strong>
+                <ul>
+                    {% for bebida in evento.bebidas.all %}
+                    <li>{{ bebida.nome }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <a href="{% url 'editar_evento' evento.pk %}">Editar</a> |
+                <a href="{% url 'excluir_evento' evento.pk %}" onclick="return confirm('Tem certeza que deseja excluir este evento?')">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

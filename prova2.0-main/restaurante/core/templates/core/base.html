@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Faça seu login{% endblock %}</title>
+
+</head>
+<style>
+    /* Resetando estilos padrões do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definindo fonte e estilo geral da página */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Estilo para o cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1a2b8a;
+    color: white;
+    border-radius: 8px;
+    
+}
+
+/* Estilo para a saudação do usuário */
+header .oi h2 {
+    font-size: 1.2em;
+}
+
+/* Estilo para o botão de logout */
+header button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+header button:hover {
+    background-color: #e60000;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    header .menu-button {
+        margin-top: 15px;
+    }
+
+    header button {
+        margin-top: 10px;
+    }
+}
+.oi1{
+    float: left;
+    width: 500px;
+    padding-right: 310px;
+}
+
+.oi2{
+    margin: 20px 0px 0px 900px;
+    width: 500px;
+    text-align: right;
+}
+</style>
+<body>
+    <header>
+        {% if user.is_authenticated%}
+        <form align="right" action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <div >
+                <div class="oi1">
+                    <h2>Olá, {{ user.username}}!</h2>
+                </div>
+                <div class="oi2">
+                    <button type="submit">Sair</button>
+                </div>
+                
+            </div>
+
+        </form>
+
+        {% else %}
+        <a href="{% url 'login' %}" class="menu-button">
+            Acessar
+        </a>
+        {%endif %}
+
+    </header>
+
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>
